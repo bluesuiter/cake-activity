@@ -12,6 +12,7 @@ class MembersController extends AppController
     {
         parent::beforeFilter();
         $this->Auth->allow(['login', 'register']);
+        // $this->Auth->allow('*');
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -21,19 +22,20 @@ App::uses('AclNode', 'Model');
  *
  * @package       Cake.Model
  */
-class Aco extends AclNode {
+class Aco extends AclNode
+{
 
-/**
- * Model name
- *
- * @var string
- */
+	/**
+	 * Model name
+	 *
+	 * @var string
+	 */
 	public $name = 'Aco';
 
-/**
- * Binds to ARO nodes through permissions settings
- *
- * @var array
- */
+	/**
+	 * Binds to ARO nodes through permissions settings
+	 *
+	 * @var array
+	 */
 	public $hasAndBelongsToMany = array('Aro' => array('with' => 'Permission'));
 }

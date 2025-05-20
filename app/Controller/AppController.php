@@ -36,6 +36,8 @@ class AppController extends Controller
 {
     public $user = null;
 
+    public $helpers = array('Html', 'Form', 'Session', 'Acl');
+
     public $components = array(
         'Session',
         'Flash',
@@ -43,6 +45,7 @@ class AppController extends Controller
             'loginAction' => array('controller' => 'members', 'action' => 'login'),
             'loginRedirect' => array('controller' => 'members', 'action' => 'dashboard'),
             'logoutRedirect' => array('controller' => 'members', 'action' => 'login'),
+            'authError' => 'Please log in to access that page.',
             'authenticate' => array(
                 'Form' => array(
                     'userModel' => 'Member',
@@ -50,11 +53,14 @@ class AppController extends Controller
                         'className' => 'Simple',
                         'hashType' => 'sha256'
                     ),
-                    'fields' => array('username' => 'email', 'password' => 'password')
+                    'fields' => array('username' => 'email', 'password' => 'password'),
+                    'authorize' => array(
+                        'Actions' => array('actionPath' => 'controllers')
+                    )
                 )
-            ),
-            'authError' => 'Please log in to access that page.'
-        )
+            )
+        ),
+
     );
 
     /**
